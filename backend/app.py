@@ -6,11 +6,14 @@ import socket
 from icmplib import ping
 import time
 import threading
+from flask_cors import CORS
+
+
 
 app = Flask(__name__)
-
-socketio = SocketIO(app)
-
+CORS(app)
+# socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")  # CORS 설정 추가
 # 외부 서버 정보 (변수로 쉽게 선언)
 EXTERNAL_SERVER = {
     'ip': '3.35.168.160',

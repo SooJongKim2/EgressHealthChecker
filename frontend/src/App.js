@@ -6,8 +6,9 @@ import { format } from 'date-fns';
 import io from 'socket.io-client';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale);
-
-const socket = io();
+const socket = io('http://health-check-1990274319.ap-northeast-2.elb.amazonaws.com', {
+  path: '/socket.io'
+});
 
 // 데이터 decimation 함수
 function decimateData(data, maxPoints) {
